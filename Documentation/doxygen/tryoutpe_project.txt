@@ -22,6 +22,11 @@
 </table>
 <br/>
 
+\page page_components Components 
+- \subpage TU1
+- \subpage TI1
+- \subpage GPIO1
+
 */
 
 

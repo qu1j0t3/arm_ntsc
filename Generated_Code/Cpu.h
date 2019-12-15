@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : MKE02Z64M20SF0RM, Rev.2.1, Apr-23 2013; KEAZ64RM, Rev.1, Sep 2013
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2019-12-11, 09:48, # CodeGen: 1
+**     Date/Time   : 2019-12-14, 14:23, # CodeGen: 14
 **     Abstract    :
 **
 **     Settings    :
@@ -74,9 +74,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/* Active configuration define symbol */
-#define PEcfg_FLASH 1U
 
 /* Methods configuration constants - generated for all enabled component's methods */
 

@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : MKE02Z64M20SF0RM, Rev.2.1, Apr-23 2013; KEAZ64RM, Rev.1, Sep 2013
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2019-12-11, 09:48, # CodeGen: 1
+**     Date/Time   : 2019-12-14, 21:58, # CodeGen: 17
 **     Abstract    :
 **
 **     Settings    :
@@ -178,6 +178,9 @@
 /* MODULE Cpu. */
 
 /* {Default RTOS Adapter} No RTOS includes */
+#include "TI1.h"
+#include "TU1.h"
+#include "GPIO1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -324,6 +327,10 @@ void PE_low_level_init(void)
              ));
   /* NVIC_IPR1: PRI_6=0 */
   NVIC_IPR1 &= (uint32_t)~(uint32_t)(NVIC_IP_PRI_6(0xFF));
+  /* ### TimerInt_LDD "TI1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)TI1_Init(NULL);
+  /* ### GPIO_LDD "GPIO1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)GPIO1_Init(NULL);
   __EI();
 }
   /* Flash configuration field */
