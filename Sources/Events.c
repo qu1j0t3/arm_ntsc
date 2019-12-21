@@ -132,8 +132,8 @@ void TI1_OnInterrupt(LDD_TUserData *UserDataPtr)
 		NOPx32; NOPx32; NOPx32;
 		NOPx32; NOPx32; NOPx32;
 		NOPx32; NOPx32; NOPx32;
-		/*NOPx32;
-		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
+		NOPx32;
+		/*PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP();*/
