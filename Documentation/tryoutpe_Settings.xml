@@ -232,9 +232,9 @@ PE_DEBUGHALT();
       <Component_name v="GPIO1" />
       <Port v="GPIOB" />
       <Port_width v="32 bits" />
-      <Mask_of_allocated_pins v="100712576" />
+      <Mask_of_allocated_pins v="100843648" />
       <boolgroup name="Interrupt service/event" v="Disabled" />
-      <list name="Bit fields" v="5">
+      <list name="Bit fields" v="6">
         <group name="Bit field">
           <Field_name v="LEDR" />
           <list name="Pins" v="1">
@@ -288,6 +288,18 @@ PE_DEBUGHALT();
           <list name="Pins" v="1">
             <group name="Pin">
               <Pin v="PTF7/ADC0_SE15" />
+              <boolgroup name="Initial pin direction" v="Output">
+                <Initial_output_state v="0" />
+              </boolgroup>
+              <Initial_pin_event v="Disabled" />
+            </group>
+          </list>
+        </group>
+        <group name="Bit field">
+          <Field_name v="TEST3" />
+          <list name="Pins" v="1">
+            <group name="Pin">
+              <Pin v="PTG1" />
               <boolgroup name="Initial pin direction" v="Output">
                 <Initial_output_state v="0" />
               </boolgroup>

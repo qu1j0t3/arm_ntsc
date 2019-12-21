@@ -22,7 +22,7 @@ by the component.
 <td class="regResetVal">0x00000000</td>
  <td>GPIOB_PDOR register, peripheral GPIO1.</td></tr>
 <tr><td>0x400FF054</td><td>GPIOB_PDDR</td>
-<td class="regNotResetVal">0x0600C080</td>
+<td class="regNotResetVal">0x0602C080</td>
  <td>GPIOB_PDDR register, peripheral GPIO1.</td></tr>
 </table>
 Color Denotes Reset Value
@@ -110,7 +110,7 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x400FF054</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x0600C080</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x0602C080</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>0 - 31</td><td>PDD</td><td>0x00</td><td>Port Data Direction</td>
@@ -122,9 +122,9 @@ registers of the peripheral(s) configured by the component.
 **          Component name                                 : GPIO1
 **          Port                                           : GPIOB
 **          Port width                                     : 32 bits
-**          Mask of allocated pins                         : 0x600C080
+**          Mask of allocated pins                         : 0x602C080
 **          Interrupt service/event                        : Disabled
-**          Bit fields                                     : 5
+**          Bit fields                                     : 6
 **            Bit field                                    : 
 **              Field name                                 : LEDR
 **              Pins                                       : 1
@@ -166,6 +166,15 @@ registers of the peripheral(s) configured by the component.
 **              Pins                                       : 1
 **                Pin                                      : 
 **                  Pin                                    : PTF7/ADC0_SE15
+**                  Pin signal                             : 
+**                  Initial pin direction                  : Output
+**                    Initial output state                 : 0
+**                  Initial pin event                      : Disabled
+**            Bit field                                    : 
+**              Field name                                 : TEST3
+**              Pins                                       : 1
+**                Pin                                      : 
+**                  Pin                                    : PTG1
 **                  Pin signal                             : 
 **                  Initial pin direction                  : Output
 **                    Initial output state                 : 0
