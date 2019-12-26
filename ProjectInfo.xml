@@ -54,7 +54,9 @@
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/GPIO1.c</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/PE_LDD.c</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/TI1.c</PathName>
+      <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/TI2.c</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/TU1.c</PathName>
+      <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/TU2.c</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/Vectors.c</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Project_Settings/Startup_Code/startup.c</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Sources/Events.c</PathName>
@@ -69,8 +71,11 @@
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/PE_LDD.h</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/PE_Types.h</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/TI1.h</PathName>
+      <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/TI2.h</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/TU1.h</PathName>
+      <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Generated_Code/TU2.h</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Sources/Events.h</PathName>
+      <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Sources/io.h</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Static_Code/IO_Map/MKE02Z2.h</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Static_Code/PDD/ADC_PDD.h</PathName>
       <PathName>/Volumes/ElCap/Users/toby/Documents/Electronics/FRDM-KE02Z/workspace/tryoutpe/Static_Code/PDD/CMP_PDD.h</PathName>

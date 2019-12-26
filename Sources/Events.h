@@ -36,6 +36,8 @@
 #include "TI1.h"
 #include "TU1.h"
 #include "GPIO1.h"
+#include "TI2.h"
+#include "TU2.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -76,6 +78,26 @@ void Cpu_OnNMIINT(void);
 */
 /* ===================================================================*/
 void TI1_OnInterrupt(LDD_TUserData *UserDataPtr);
+
+/*
+** ===================================================================
+**     Event       :  TI2_OnInterrupt (module Events)
+**
+**     Component   :  TI2 [TimerInt_LDD]
+*/
+/*!
+**     @brief
+**         Called if periodic event occur. Component and OnInterrupt
+**         event must be enabled. See [SetEventMask] and [GetEventMask]
+**         methods. This event is available only if a [Interrupt
+**         service/event] is enabled.
+**     @param
+**         UserDataPtr     - Pointer to the user or
+**                           RTOS specific data. The pointer passed as
+**                           the parameter of Init method.
+*/
+/* ===================================================================*/
+void TI2_OnInterrupt(LDD_TUserData *UserDataPtr);
 
 /* END Events */
 

@@ -33,6 +33,8 @@
 #include "TI1.h"
 #include "TU1.h"
 #include "GPIO1.h"
+#include "TI2.h"
+#include "TU2.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -54,8 +56,6 @@
 // adjusted target freq: 31,192 ; measured 15,718
 
 // Overall frame rate (525 lines) measured 29.938 Hz
-
-
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
@@ -81,6 +81,34 @@ int main(void)
 		  "r" (test_isr)
   );
 */
+
+  // We need to carefully arrange the skew between TU1 and TU2 interrupts.
+  // TU1 is the usual sync interrupt. TU2 is used to raise the SYNC line
+  // for the "long" (27.1µs) pulses, since a single ISR is too close to the
+  // timer period to work reliably.
+  // The following initialisations are therefore carefully timed:
+
+  /*PIT_MCR = 0; */
+
+  // Must turn off interrupts because we're going to poll instead
+  PIT_TCTRL0 = PIT_TCTRL1 = 0;
+  PIT_TFLG1  = PIT_TFLG_TIF_MASK; // clear interrupt flag
+  PIT_TFLG0  = PIT_TFLG_TIF_MASK; // clear interrupt flag
+  PIT_LDVAL0 = PIT_LDVAL1 = 0x10;
+  PIT_TCTRL0 = PIT_TCTRL1 = PIT_TCTRL_TEN_MASK;
+
+  // wait for timer expiry
+  while(!(PIT_TFLG1 & PIT_TFLG_TIF_MASK)) ; // should take 4-5 cycles each poll (LDR, TST, BEQ) so could be problematic with periods < 6 cycles?
+  PIT_TFLG1  = PIT_TFLG_TIF_MASK; // clear interrupt flag
+  PIT_TCTRL1 = 0; // disable timer
+
+  while(!(PIT_TFLG0 & PIT_TFLG_TIF_MASK)) ;
+  PIT_TFLG0  = PIT_TFLG_TIF_MASK; // clear interrupt flag
+  PIT_TCTRL0 = 0; // disable timer
+
+  //PIT_LDVAL0 = PIT_LDVAL1 = 0x20;
+
+  PIT_TCTRL0 = PIT_TCTRL1 = PIT_TCTRL_TIE_MASK | PIT_TCTRL_TEN_MASK; // re-enable timers
 
   for(;;) {
 	  // wait for video flag

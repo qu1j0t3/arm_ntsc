@@ -27,6 +27,20 @@ Module "GPIO1"     (component GPIO_LDD)
    - GPIO1_SetFieldBits -This method drives the specified bits of the specified bit field to the active level.
    - GPIO1_ToggleFieldBits -This method inverts the specified bits of the specified bit field to other level.
 
+Module "TI2"       (component TimerInt_LDD)
+   - TI2_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
+                interrupt priority, sets pin routing, sets timing, etc. If the property <"Enable in init. code"> is set to 
+                "yes" value then the device is also enabled (see the description of the <Enable> method). In this case the 
+                <Enable> method is not necessary and needn't to be generated. This method can be called only once. Before the 
+                second call of Init the <Deinit> must be called first.
+
+Module "TU2"       (component TimerUnit_LDD)
+   - TU2_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
+                interrupt priority, sets pin routing, sets timing, etc. If the property <"Enable in init. code"> is set to 
+                "yes" value then the device is also enabled (see the description of the <Enable> method). In this case the 
+                <Enable> method is not necessary and needn't to be generated. This method can be called only once. Before the 
+                second call of Init the <Deinit> must be called first.
+
 Module "Cpu"       (component MKE02Z64QH2)
 
 ===================================================================================

@@ -119,21 +119,22 @@ void TI1_OnInterrupt(LDD_TUserData *UserDataPtr)
 	// Then an additional 1µs to update field and intr variables.
 	// This puts a limit on the long sync pulse time as it is very close to the maximum available time.
 	// If we wait too long, the next interrupt will misfire too early, corrupting the output pulses.
-
-	FGPIOB_PTOR = PB_G1;
-	if(field ==1 && intr==12) FGPIOB_PCOR = VIDEO_PIN; // always kill video during vertical blanking interval
+#if 0
+	// do them all at the same time, to align edges and scope trigger
+	FGPIOB_PTOR = PB_G1 | ((field & 1) && intr==12 ? VIDEO_PIN : 0); // always kill video during vertical blanking interval
 
 	if(0b111111000000111111 & (1 << intr)) { // Equalising pulse nominal: 2.3µs +/- .1µs
 		FGPIOB_PCOR = SYNC_PIN;
 		NOPx32; // ~ 2.29µs
+		FGPIOB_PSOR = SYNC_PIN; // end of sync pulse
 	} else if(0b111111000000 & (1 << intr)) { // vertical blanking interval pulse nominal 27.1µs
 		FGPIOB_PCOR = SYNC_PIN;
 		NOPx32; NOPx32; NOPx32; // ~ 27.1µs
 		NOPx32; NOPx32; NOPx32;
-		NOPx32; NOPx32; NOPx32;
+		/*NOPx32; NOPx32; NOPx32;
 		NOPx32; NOPx32; NOPx32;
 		NOPx32;
-		/*PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
+		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP();*/
@@ -156,30 +157,54 @@ void TI1_OnInterrupt(LDD_TUserData *UserDataPtr)
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		// ~ 9.4µs
 
+		FGPIOB_PSOR = SYNC_PIN; // end of sync pulse
 		// NOW announce the horizontal start of line video
-		video = (intr + field) >= 41; // field 1: intr >= 40 ; field 2(0): intr >= 41
+		video = (intr + (field & 1)) >= 41; // field 1: intr >= 40 ; field 2(0): intr >= 41
 	} else {
 		// no neg sync pulse
 	}
 
-	FGPIOB_PSOR = SYNC_PIN; // end of sync pulse
 
 
 	// At least 12 cycles for this update: (~ 1µs)
 
 	if((++intr) == 525) {
 		intr = 0;
-		field ^= 1;
+		++field;
 	}
 
 	FGPIOB_PSOR = VIDEO_PIN; // trigger signal for testing ONLY!
+#endif
+	FGPIOB_PCOR = VIDEO_PIN|LED_G;
+	NOPx32;
+	PE_NOP(); PE_NOP();
+	FGPIOB_PSOR = VIDEO_PIN|LED_G;
 }
 
-PE_ISR(test_isr) {
-	if((++intr) == 5000) {
-		intr = 0;
-		GPIOB_PTOR = LED_R;
-	}
+/*
+** ===================================================================
+**     Event       :  TI2_OnInterrupt (module Events)
+**
+**     Component   :  TI2 [TimerInt_LDD]
+*/
+/*!
+**     @brief
+**         Called if periodic event occur. Component and OnInterrupt
+**         event must be enabled. See [SetEventMask] and [GetEventMask]
+**         methods. This event is available only if a [Interrupt
+**         service/event] is enabled.
+**     @param
+**         UserDataPtr     - Pointer to the user or
+**                           RTOS specific data. The pointer passed as
+**                           the parameter of Init method.
+*/
+/* ===================================================================*/
+void TI2_OnInterrupt(LDD_TUserData *UserDataPtr)
+{
+	FGPIOB_PCOR = PB_G1|LED_R;
+	NOPx32;
+	PE_NOP(); PE_NOP();
+	FGPIOB_PSOR = PB_G1|LED_R;
 }
 
 /* END Events */

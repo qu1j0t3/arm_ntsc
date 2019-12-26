@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : MKE02Z64M20SF0RM, Rev.2.1, Apr-23 2013; KEAZ64RM, Rev.1, Sep 2013
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2019-12-14, 21:58, # CodeGen: 17
+**     Date/Time   : 2019-12-23, 00:59, # CodeGen: 31
 **     Abstract    :
 **
 **     Settings    :
@@ -181,6 +181,8 @@
 #include "TI1.h"
 #include "TU1.h"
 #include "GPIO1.h"
+#include "TI2.h"
+#include "TU2.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -331,6 +333,8 @@ void PE_low_level_init(void)
   (void)TI1_Init(NULL);
   /* ### GPIO_LDD "GPIO1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)GPIO1_Init(NULL);
+  /* ### TimerInt_LDD "TI2" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)TI2_Init(NULL);
   __EI();
 }
   /* Flash configuration field */

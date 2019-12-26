@@ -6,7 +6,7 @@
 **     Version     : Component 01.044, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2019-12-14, 21:58, # CodeGen: 17
+**     Date/Time   : 2019-12-23, 00:04, # CodeGen: 28
 **     Abstract    :
 **
 **     Settings    :
@@ -64,6 +64,8 @@
 #include "TI1.h"
 #include "TU1.h"
 #include "GPIO1.h"
+#include "TI2.h"
+#include "TU2.h"
 
 
 /*

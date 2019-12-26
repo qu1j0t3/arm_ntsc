@@ -6,7 +6,7 @@
 **     Version     : Component 01.044, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2019-12-14, 21:58, # CodeGen: 17
+**     Date/Time   : 2019-12-23, 00:04, # CodeGen: 28
 **     Abstract    :
 **
 **     Settings    :
@@ -58,6 +58,8 @@
   #include "TI1.h"
   #include "TU1.h"
   #include "GPIO1.h"
+  #include "TI2.h"
+  #include "TU2.h"
   #include "Events.h"
 
 
@@ -116,7 +118,7 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x24  0x00000090   -   ivINT_RTC                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x25  0x00000094   -   ivINT_ACMP1                   unused by PE */
     (tIsrFunc)&TU1_Interrupt,          /* 0x26  0x00000098   2   ivINT_PIT_CH0                 used by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x27  0x0000009C   -   ivINT_PIT_CH1                 unused by PE */
+    (tIsrFunc)&TU2_Interrupt,          /* 0x27  0x0000009C   2   ivINT_PIT_CH1                 used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x28  0x000000A0   -   ivINT_KBI0                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x29  0x000000A4   -   ivINT_KBI1                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x2A  0x000000A8   -   ivINT_Reserved42              unused by PE */

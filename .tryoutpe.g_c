@@ -19,7 +19,7 @@
         <Line>PE_Const</Line>
         <Line>IO_Map</Line>
       </GenSharedModules>
-      <ShrdHeaderAge0>1334751043</ShrdHeaderAge0>
+      <ShrdHeaderAge0>1335296153</ShrdHeaderAge0>
       <ShrdCodeAge0>-1</ShrdCodeAge0>
       <ShrdAsemblAge0>-1</ShrdAsemblAge0>
       <ShrdHeaderAge1>1334529547</ShrdHeaderAge1>
@@ -31,10 +31,12 @@
       <ShrdHeaderAge3>1334529547</ShrdHeaderAge3>
       <ShrdCodeAge3>-1</ShrdCodeAge3>
       <ShrdAsemblAge3>-1</ShrdAsemblAge3>
-      <GenExtraFiles lines_count="12">
+      <GenExtraFiles lines_count="14">
         <Line>Documentation\doxygen\TU1_component.txt</Line>
         <Line>Documentation\doxygen\TI1_component.txt</Line>
         <Line>Documentation\doxygen\GPIO1_component.txt</Line>
+        <Line>Documentation\doxygen\TU2_component.txt</Line>
+        <Line>Documentation\doxygen\TI2_component.txt</Line>
         <Line>Documentation\doxygen\tryoutpe_project.txt</Line>
         <Line>Documentation\doxygen\RoutingReport_component.txt</Line>
         <Line>Documentation\doxygen\pex.doxyfile</Line>
@@ -45,18 +47,20 @@
         <Line>Project_Settings\Startup_Code\startup.c</Line>
         <Line>Generated_Code\Vectors.c</Line>
       </GenExtraFiles>
-      <GenExtraFileSrcDir10>lib\Kinetis\startup\</GenExtraFileSrcDir10>
-      <GenExtraFileSrcDir6>lib\doxygen\</GenExtraFileSrcDir6>
-      <XtraAge7>1334751043</XtraAge7>
-      <XtraAge8>1334751043</XtraAge8>
-      <XtraAge10>1334529236</XtraAge10>
-      <XtraAge11>1334751043</XtraAge11>
+      <GenExtraFileSrcDir12>lib\Kinetis\startup\</GenExtraFileSrcDir12>
+      <GenExtraFileSrcDir8>lib\doxygen\</GenExtraFileSrcDir8>
+      <XtraAge9>1335296153</XtraAge9>
+      <XtraAge10>1335296154</XtraAge10>
+      <XtraAge12>1334529236</XtraAge12>
+      <XtraAge13>1335296154</XtraAge13>
+      <GenExtraFileType13>4</GenExtraFileType13>
+      <GenExtraFileType12>5</GenExtraFileType12>
       <GenExtraFileType11>4</GenExtraFileType11>
-      <GenExtraFileType10>5</GenExtraFileType10>
+      <GenExtraFileType10>4</GenExtraFileType10>
       <GenExtraFileType9>4</GenExtraFileType9>
-      <GenExtraFileType8>4</GenExtraFileType8>
+      <GenExtraFileType8>5</GenExtraFileType8>
       <GenExtraFileType7>4</GenExtraFileType7>
-      <GenExtraFileType6>5</GenExtraFileType6>
+      <GenExtraFileType6>4</GenExtraFileType6>
       <GenExtraFileType5>4</GenExtraFileType5>
       <GenExtraFileType4>4</GenExtraFileType4>
       <GenExtraFileType3>4</GenExtraFileType3>
@@ -256,11 +260,12 @@
       <GenEventModules lines_count="1">
         <Line>Events</Line>
       </GenEventModules>
-      <GenMethodsInEvents lines_count="2">
+      <GenMethodsInEvents lines_count="3">
+        <Line>TI2_OnInterrupt</Line>
         <Line>TI1_OnInterrupt</Line>
         <Line>Cpu_OnNMIINT</Line>
       </GenMethodsInEvents>
-      <GenAllModules lines_count="9">
+      <GenAllModules lines_count="11">
         <Line>Cpu</Line>
         <Line>Events</Line>
         <Line>GPIO1</Line>
@@ -269,18 +274,22 @@
         <Line>PE_Error</Line>
         <Line>PE_Types</Line>
         <Line>TI1</Line>
+        <Line>TI2</Line>
         <Line>TU1</Line>
+        <Line>TU2</Line>
       </GenAllModules>
       <GenExternModules lines_count="0" />
-      <GenBeanModules lines_count="3">
+      <GenBeanModules lines_count="5">
         <Line>TI1</Line>
         <Line>TU1</Line>
         <Line>GPIO1</Line>
+        <Line>TI2</Line>
+        <Line>TU2</Line>
       </GenBeanModules>
     </GenFiles>
     <SignalListFile>Documentation\tryoutpe_SIGNALS.txt</SignalListFile>
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>25</ProjectModificationStamp>
+    <ProjectModificationStamp>28</ProjectModificationStamp>
   </Options>
   <CpuID_2>
     <Generated>true</Generated>
@@ -289,7 +298,7 @@
     <GenDriverVersion>01.04</GenDriverVersion>
     <GenEventModule>Events</GenEventModule>
     <HeaderAge>1334735611</HeaderAge>
-    <CodeAge>1334751043</CodeAge>
+    <CodeAge>1335297894</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>6</GenNumMethods>
     <SetClockConfiguration>false</SetClockConfiguration>
@@ -365,8 +374,8 @@
     <GenComponentVersion>01.018</GenComponentVersion>
     <GenDriverVersion>01.02</GenDriverVersion>
     <GenEventModule>Events</GenEventModule>
-    <HeaderAge>1334773462</HeaderAge>
-    <CodeAge>1334773462</CodeAge>
+    <HeaderAge>1335297894</HeaderAge>
+    <CodeAge>1335297894</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>17</GenNumMethods>
     <Init>true</Init>
@@ -432,7 +441,7 @@
     <GenDriverVersion>01.11</GenDriverVersion>
     <GenEventModule>Events</GenEventModule>
     <HeaderAge>1334773462</HeaderAge>
-    <CodeAge>1334773462</CodeAge>
+    <CodeAge>1335296153</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>22</GenNumMethods>
     <Init>true</Init>
@@ -658,6 +667,169 @@
     <GenExtraFilesCount>1</GenExtraFilesCount>
     <ExtraFile0>Documentation\doxygen\GPIO1_component.txt</ExtraFile0>
   </ComponentID_25>
+  <ComponentID_29>
+    <Generated>true</Generated>
+    <GenCompName>TI2</GenCompName>
+    <GenComponentVersion>01.018</GenComponentVersion>
+    <GenDriverVersion>01.02</GenDriverVersion>
+    <GenEventModule>Events</GenEventModule>
+    <HeaderAge>1335297894</HeaderAge>
+    <CodeAge>1335297894</CodeAge>
+    <AsemblAge>-1</AsemblAge>
+    <GenNumMethods>17</GenNumMethods>
+    <Init>true</Init>
+    <Deinit>false</Deinit>
+    <Enable>false</Enable>
+    <Disable>false</Disable>
+    <SetEventMask>false</SetEventMask>
+    <GetEventMask>false</GetEventMask>
+    <GetEventStatus>false</GetEventStatus>
+    <SelectPeriod>false</SelectPeriod>
+    <SetPeriodUS>false</SetPeriodUS>
+    <SetPeriodMS>false</SetPeriodMS>
+    <SetPeriodSec>false</SetPeriodSec>
+    <SetPeriodReal>false</SetPeriodReal>
+    <SetFrequencyHz>false</SetFrequencyHz>
+    <SetFrequencykHz>false</SetFrequencykHz>
+    <SetFrequencyMHz>false</SetFrequencyMHz>
+    <SetOperationMode>false</SetOperationMode>
+    <GetDriverState>false</GetDriverState>
+    <GenNumEvents>1</GenNumEvents>
+    <OnInterrupt_Selected>2</OnInterrupt_Selected>
+    <OnInterrupt_Name>TI2_OnInterrupt</OnInterrupt_Name>
+    <OnInterrupt_Priority>interrupts disabled</OnInterrupt_Priority>
+    <GenSmartUserChangesDetected_Header>false</GenSmartUserChangesDetected_Header>
+    <GenSmartUserChangesDetected_Code>false</GenSmartUserChangesDetected_Code>
+    <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
+    <GenMethodPos>4</GenMethodPos>
+    <MethodPos>
+      <MethodPos0>Init</MethodPos0>
+      <MethodType>method</MethodType>
+      <ModuleType>Header</ModuleType>
+      <LineBeg>127</LineBeg>
+      <LineEnd>152</LineEnd>
+    </MethodPos>
+    <MethodPos>
+      <MethodPos1>Interrupt</MethodPos1>
+      <MethodType>internal_method</MethodType>
+      <ModuleType>Header</ModuleType>
+      <LineBeg>153</LineBeg>
+      <LineEnd>164</LineEnd>
+    </MethodPos>
+    <MethodPos>
+      <MethodPos2>Init</MethodPos2>
+      <MethodType>method</MethodType>
+      <ModuleType>Code</ModuleType>
+      <LineBeg>114</LineBeg>
+      <LineEnd>160</LineEnd>
+    </MethodPos>
+    <MethodPos>
+      <MethodPos3>Interrupt</MethodPos3>
+      <MethodType>internal_method</MethodType>
+      <ModuleType>Code</ModuleType>
+      <LineBeg>161</LineBeg>
+      <LineEnd>178</LineEnd>
+    </MethodPos>
+    <GenExtraFilesCount>1</GenExtraFilesCount>
+    <ExtraFile0>Documentation\doxygen\TI2_component.txt</ExtraFile0>
+  </ComponentID_29>
+  <ComponentID_30>
+    <Generated>true</Generated>
+    <GenCompName>TU2</GenCompName>
+    <GenComponentVersion>01.164</GenComponentVersion>
+    <GenDriverVersion>01.11</GenDriverVersion>
+    <GenEventModule>Events</GenEventModule>
+    <HeaderAge>1335296153</HeaderAge>
+    <CodeAge>1335296153</CodeAge>
+    <AsemblAge>-1</AsemblAge>
+    <GenNumMethods>22</GenNumMethods>
+    <Init>true</Init>
+    <Deinit>false</Deinit>
+    <Enable>false</Enable>
+    <Disable>false</Disable>
+    <SetEventMask>false</SetEventMask>
+    <GetEventMask>false</GetEventMask>
+    <GetEventStatus>false</GetEventStatus>
+    <SelectInputFrequency>false</SelectInputFrequency>
+    <GetInputFrequencyReal>false</GetInputFrequencyReal>
+    <GetInputFrequency>false</GetInputFrequency>
+    <SetPeriodTicks>false</SetPeriodTicks>
+    <GetPeriodTicks>false</GetPeriodTicks>
+    <ResetCounter>false</ResetCounter>
+    <GetCounterValue>false</GetCounterValue>
+    <SetOffsetTicks>false</SetOffsetTicks>
+    <GetOffsetTicks>false</GetOffsetTicks>
+    <GetCaptureValue>false</GetCaptureValue>
+    <SelectOutputAction>false</SelectOutputAction>
+    <SelectCaptureEdge>false</SelectCaptureEdge>
+    <ConnectPin>false</ConnectPin>
+    <SetOperationMode>false</SetOperationMode>
+    <GetDriverState>false</GetDriverState>
+    <GenNumEvents>9</GenNumEvents>
+    <OnCounterRestart_Selected>2</OnCounterRestart_Selected>
+    <OnCounterRestart_Name>TU2_OnCounterRestart</OnCounterRestart_Name>
+    <OnCounterRestart_Priority>interrupts disabled</OnCounterRestart_Priority>
+    <OnChannel0_Selected>0</OnChannel0_Selected>
+    <OnChannel0_Name>TU2_OnChannel0</OnChannel0_Name>
+    <OnChannel0_Priority>interrupts disabled</OnChannel0_Priority>
+    <OnChannel1_Selected>0</OnChannel1_Selected>
+    <OnChannel1_Name>TU2_OnChannel1</OnChannel1_Name>
+    <OnChannel1_Priority>interrupts disabled</OnChannel1_Priority>
+    <OnChannel2_Selected>0</OnChannel2_Selected>
+    <OnChannel2_Name>TU2_OnChannel2</OnChannel2_Name>
+    <OnChannel2_Priority>interrupts disabled</OnChannel2_Priority>
+    <OnChannel3_Selected>0</OnChannel3_Selected>
+    <OnChannel3_Name>TU2_OnChannel3</OnChannel3_Name>
+    <OnChannel3_Priority>interrupts disabled</OnChannel3_Priority>
+    <OnChannel4_Selected>0</OnChannel4_Selected>
+    <OnChannel4_Name>TU2_OnChannel4</OnChannel4_Name>
+    <OnChannel4_Priority>interrupts disabled</OnChannel4_Priority>
+    <OnChannel5_Selected>0</OnChannel5_Selected>
+    <OnChannel5_Name>TU2_OnChannel5</OnChannel5_Name>
+    <OnChannel5_Priority>interrupts disabled</OnChannel5_Priority>
+    <OnChannel6_Selected>0</OnChannel6_Selected>
+    <OnChannel6_Name>TU2_OnChannel6</OnChannel6_Name>
+    <OnChannel6_Priority>interrupts disabled</OnChannel6_Priority>
+    <OnChannel7_Selected>0</OnChannel7_Selected>
+    <OnChannel7_Name>TU2_OnChannel7</OnChannel7_Name>
+    <OnChannel7_Priority>interrupts disabled</OnChannel7_Priority>
+    <ISR_CounterIntISRHandle />
+    <ISR_ModuloIntISRHandle />
+    <GenSmartUserChangesDetected_Header>false</GenSmartUserChangesDetected_Header>
+    <GenSmartUserChangesDetected_Code>false</GenSmartUserChangesDetected_Code>
+    <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
+    <GenMethodPos>4</GenMethodPos>
+    <MethodPos>
+      <MethodPos0>Init</MethodPos0>
+      <MethodType>method</MethodType>
+      <ModuleType>Header</ModuleType>
+      <LineBeg>139</LineBeg>
+      <LineEnd>164</LineEnd>
+    </MethodPos>
+    <MethodPos>
+      <MethodPos1>Interrupt</MethodPos1>
+      <MethodType>internal_method</MethodType>
+      <ModuleType>Header</ModuleType>
+      <LineBeg>165</LineBeg>
+      <LineEnd>177</LineEnd>
+    </MethodPos>
+    <MethodPos>
+      <MethodPos2>Init</MethodPos2>
+      <MethodType>method</MethodType>
+      <ModuleType>Code</ModuleType>
+      <LineBeg>120</LineBeg>
+      <LineEnd>193</LineEnd>
+    </MethodPos>
+    <MethodPos>
+      <MethodPos3>Interrupt</MethodPos3>
+      <MethodType>internal_method</MethodType>
+      <ModuleType>Code</ModuleType>
+      <LineBeg>194</LineBeg>
+      <LineEnd>212</LineEnd>
+    </MethodPos>
+    <GenExtraFilesCount>1</GenExtraFilesCount>
+    <ExtraFile0>Documentation\doxygen\TU2_component.txt</ExtraFile0>
+  </ComponentID_30>
   <UsedSrcFiles>
     <SrcFile0>Drivers\Kinetis\PE_LDD.prg=1183486433</SrcFile0>
     <SrcFile1>Drivers\PEx_Kinetis.src=1183486050</SrcFile1>
