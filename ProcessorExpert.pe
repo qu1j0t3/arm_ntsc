@@ -3,7 +3,7 @@
   <Header>
     <Name>tryoutpe</Name>
     <SavedBy>toby</SavedBy>
-    <ModificationStamp>28</ModificationStamp>
+    <ModificationStamp>29</ModificationStamp>
     <Date>2019-12-11</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1550-0615</PEversion>
@@ -4592,7 +4592,7 @@
       <ItemState>
         <ItemSymbol>AllocatedPinsMaskProp</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>100843648</Value>
+        <Value>1174585472</Value>
         <Base>HEX</Base>
         <Index>-1</Index>
       </ItemState>
@@ -4650,7 +4650,7 @@
       <ItemState>
         <ItemSymbol>BitFields</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>6</ListItemCount>
+        <ListItemCount>7</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
       </ItemState>
@@ -5349,6 +5349,123 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>Lock5_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
+        <Index>1</Index>
+        <Value>false</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>BitField6</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>FieldName6</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>TEST4</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>FieldMaskProp6</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1073741824</Value>
+        <Base>HEX</Base>
+        <Index>-1</Index>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>FieldStartBit6</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>30</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>AllocatedPins6</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <ListItemCount>1</ListItemCount>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>AllocatedPin6_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Pin6_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>PTH6</Value>
+        <SharedPrphMode>false</SharedPrphMode>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>PinSignal6_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value />
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>PinFieldIndexProp6_0</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>0</Value>
+        <Base>DEC</Base>
+        <Index>-1</Index>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>PinIndexProp6_0</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>30</Value>
+        <Base>DEC</Base>
+        <Index>-1</Index>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>PinFieldMaskProp6_0</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>HEX</Base>
+        <Index>-1</Index>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>PinMaskProp6_0</ItemSymbol>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1073741824</Value>
+        <Base>HEX</Base>
+        <Index>-1</Index>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitPinDirection6_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>true</Value>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitPinOutputState6_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InitialInterrupt6_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>Disabled</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>LockInitSupport6_0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Lock6_0</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>

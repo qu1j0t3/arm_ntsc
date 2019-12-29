@@ -7,7 +7,7 @@
 **     Version     : Component 01.128, Driver 01.08, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2019-12-15, 16:58, # CodeGen: 26
+**     Date/Time   : 2019-12-27, 23:46, # CodeGen: 32
 **     Abstract    :
 **         The HAL GPIO component will provide a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -19,9 +19,9 @@
 **          Component name                                 : GPIO1
 **          Port                                           : GPIOB
 **          Port width                                     : 32 bits
-**          Mask of allocated pins                         : 0x602C080
+**          Mask of allocated pins                         : 0x4602C080
 **          Interrupt service/event                        : Disabled
-**          Bit fields                                     : 6
+**          Bit fields                                     : 7
 **            Bit field                                    : 
 **              Field name                                 : LEDR
 **              Pins                                       : 1
@@ -72,6 +72,15 @@
 **              Pins                                       : 1
 **                Pin                                      : 
 **                  Pin                                    : PTG1
+**                  Pin signal                             : 
+**                  Initial pin direction                  : Output
+**                    Initial output state                 : 0
+**                  Initial pin event                      : Disabled
+**            Bit field                                    : 
+**              Field name                                 : TEST4
+**              Pins                                       : 1
+**                Pin                                      : 
+**                  Pin                                    : PTH6
 **                  Pin signal                             : 
 **                  Initial pin direction                  : Output
 **                    Initial output state                 : 0
@@ -178,10 +187,10 @@ LDD_TDeviceData* GPIO1_Init(LDD_TUserData *UserDataPtr)
   DeviceDataPrv = &DeviceDataPrv__DEFAULT_RTOS_ALLOC;
   /* Save RTOS Device structure */
   DeviceDataPrv->UserData = UserDataPtr; /* Store the RTOS device structure */
-  /* GPIOB_PDOR: PDO&=~0x0602C080 */
-  GPIOB_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x0602C080));
-  /* GPIOB_PDDR: PDD|=0x0602C080 */
-  GPIOB_PDDR |= GPIO_PDDR_PDD(0x0602C080);
+  /* GPIOB_PDOR: PDO&=~0x4602C080 */
+  GPIOB_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x4602C080));
+  /* GPIOB_PDDR: PDD|=0x4602C080 */
+  GPIOB_PDDR |= GPIO_PDDR_PDD(0x4602C080);
   /* Registration of the device structure */
   PE_LDD_RegisterDeviceStructure(PE_LDD_COMPONENT_GPIO1_ID,DeviceDataPrv);
   return ((LDD_TDeviceData *)DeviceDataPrv);
@@ -293,6 +302,19 @@ void GPIO1_SetFieldValue(LDD_TDeviceData *DeviceDataPtr, LDD_GPIO_TBitField Fiel
       );
       break;
     }
+    case TEST4: {                      /* bit field #6 */
+      GPIO_PDD_SetPortDataOutput(GPIO1_MODULE_BASE_ADDRESS,
+        (
+          GPIO_PDD_GetPortDataOutput(GPIO1_MODULE_BASE_ADDRESS)
+          & ((GPIO1_TPortValue)(~((GPIO1_TPortValue)GPIO1_TEST4_MASK)))
+        )
+        | (
+          ((GPIO1_TPortValue)(Value << GPIO1_TEST4_START_BIT))
+          & ((GPIO1_TPortValue)GPIO1_TEST4_MASK)
+        )
+      );
+      break;
+    }
     default:
       break;                           /* Invalid Field is not treated, result is undefined */
   } /* switch (Field) */
@@ -386,6 +408,16 @@ GPIO1_TFieldValue GPIO1_GetFieldValue(LDD_TDeviceData *DeviceDataPtr, LDD_GPIO_T
           >> GPIO1_TEST3_START_BIT
         );
     }
+    case TEST4: {                      /* bit field #6 */
+      return
+        (GPIO1_TFieldValue)(
+          (
+            GPIO_PDD_GetPortDataInput(GPIO1_MODULE_BASE_ADDRESS)
+            & (GPIO1_TPortValue)GPIO1_TEST4_MASK
+          )
+          >> GPIO1_TEST4_START_BIT
+        );
+    }
     default:
       break;                           /* Invalid BitField is not treated, result is undefined */
   } /* switch (Field) */
@@ -462,6 +494,13 @@ void GPIO1_ClearFieldBits(LDD_TDeviceData *DeviceDataPtr, LDD_GPIO_TBitField Fie
       GPIO_PDD_ClearPortDataOutputMask(GPIO1_MODULE_BASE_ADDRESS,
         ((GPIO1_TPortValue)GPIO1_TEST3_MASK)
         & ((GPIO1_TPortValue)(Mask << GPIO1_TEST3_START_BIT))
+      );
+      break;
+    }
+    case TEST4: {                      /* bit field #6 */
+      GPIO_PDD_ClearPortDataOutputMask(GPIO1_MODULE_BASE_ADDRESS,
+        ((GPIO1_TPortValue)GPIO1_TEST4_MASK)
+        & ((GPIO1_TPortValue)(Mask << GPIO1_TEST4_START_BIT))
       );
       break;
     }
@@ -543,6 +582,13 @@ void GPIO1_SetFieldBits(LDD_TDeviceData *DeviceDataPtr, LDD_GPIO_TBitField Field
       );
       break;
     }
+    case TEST4: {                      /* bit field #6 */
+      GPIO_PDD_SetPortDataOutputMask(GPIO1_MODULE_BASE_ADDRESS,
+        ((GPIO1_TPortValue)GPIO1_TEST4_MASK)
+        & ((GPIO1_TPortValue)(Mask << GPIO1_TEST4_START_BIT))
+      );
+      break;
+    }
     default:
       break;                           /* Invalid Field is not treated, result is undefined */
   } /* switch (Field) */
@@ -618,6 +664,13 @@ void GPIO1_ToggleFieldBits(LDD_TDeviceData *DeviceDataPtr, LDD_GPIO_TBitField Fi
       GPIO_PDD_TogglePortDataOutputMask(GPIO1_MODULE_BASE_ADDRESS,
         ((GPIO1_TPortValue)GPIO1_TEST3_MASK)
         & ((GPIO1_TPortValue)(Mask << GPIO1_TEST3_START_BIT))
+      );
+      break;
+    }
+    case TEST4: {                      /* bit field #6 */
+      GPIO_PDD_TogglePortDataOutputMask(GPIO1_MODULE_BASE_ADDRESS,
+        ((GPIO1_TPortValue)GPIO1_TEST4_MASK)
+        & ((GPIO1_TPortValue)(Mask << GPIO1_TEST4_START_BIT))
       );
       break;
     }

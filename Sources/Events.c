@@ -79,10 +79,10 @@ void Cpu_OnNMIINT(void)
 
 
 volatile unsigned field = 0; // low bit 1 = field 1; low bit 0 = field 2
-volatile uint16_t intr = 0;  // interrupt count = half line count; intr 0 (mod 525) is beginning of field
+volatile unsigned intr = 0;  // interrupt count = half line count; intr 0 (mod 525) is beginning of field
 // In field 1, intr=40 marks start of sync pulse before first full line of video
 // In field 2, intr=41 marks start of sync pulse before first full line of video
-volatile uint8_t video = 0; // set to 1 at end of horizontal blanking period, outside vertical blanking interval
+volatile unsigned video = 0; // set to 1 at end of horizontal blanking period, outside vertical blanking interval
 
 // Vertical blanking interval starts at intr 0
 
@@ -119,66 +119,69 @@ void TI1_OnInterrupt(LDD_TUserData *UserDataPtr)
 	// Then an additional 1µs to update field and intr variables.
 	// This puts a limit on the long sync pulse time as it is very close to the maximum available time.
 	// If we wait too long, the next interrupt will misfire too early, corrupting the output pulses.
-#if 0
-	// do them all at the same time, to align edges and scope trigger
-	FGPIOB_PTOR = PB_G1 | ((field & 1) && intr==12 ? VIDEO_PIN : 0); // always kill video during vertical blanking interval
 
+#if 0
+	// Level test
+	FGPIOB_PCOR = VIDEO_PIN | PB_F6;
+	NOPx32;
+	FGPIOB_PTOR = VIDEO_PIN | SYNC_PIN | PB_F6;
+	NOPx32;
+	FGPIOB_PTOR = VIDEO_PIN;
+	NOPx32;
+	FGPIOB_PTOR = VIDEO_PIN | SYNC_PIN;
+#endif
+
+
+#if 1
 	if(0b111111000000111111 & (1 << intr)) { // Equalising pulse nominal: 2.3µs +/- .1µs
 		FGPIOB_PCOR = SYNC_PIN;
 		NOPx32; // ~ 2.29µs
 		FGPIOB_PSOR = SYNC_PIN; // end of sync pulse
 	} else if(0b111111000000 & (1 << intr)) { // vertical blanking interval pulse nominal 27.1µs
 		FGPIOB_PCOR = SYNC_PIN;
-		NOPx32; NOPx32; NOPx32; // ~ 27.1µs
-		NOPx32; NOPx32; NOPx32;
-		/*NOPx32; NOPx32; NOPx32;
-		NOPx32; NOPx32; NOPx32;
-		NOPx32;
-		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
-		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
-		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
-		PE_NOP(); PE_NOP(); PE_NOP();*/
-	} else if( (field ^ intr) & 1 ) { // vertical sync pulse nominal 4.7µs +/- .1µs
-		// Field 1: Even numbered interrupts trigger sync pulse
-		// Field 2: Odd numbered interrupts trigger sync pulse
-		FGPIOB_PCOR = SYNC_PIN; // start of sync
+		// TI2 interrupt will fire and raise SYNC after ~ 27.1µs
+	} else if( (intr ^ field) & 1 ) {
+		// Field 1: First sync pulse at intr 18; Even numbered interrupts trigger sync pulse ... intr 40 begins first full video line
+		// Field 2: First sync pulse at intr 19; Odd numbered interrupts trigger sync pulse ... intr 41 begins first full video line
+
+		FGPIOB_PCOR = SYNC_PIN | LED_R | PB_F6; // start of sync -- vertical sync pulse nominal 4.7µs +/- .1µs
+
 		NOPx32;
 		NOPx32;
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
-		PE_NOP(); PE_NOP(); PE_NOP();
+		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
+		PE_NOP();
 		// ~ 4.7µs
 
-		FGPIOB_PSOR = SYNC_PIN; // end of sync pulse
+		FGPIOB_PSOR = SYNC_PIN | LED_R; // end of sync pulse
 		// sync to blanking end should be nominal 9.4µs +/- .1µs
 		NOPx32;
-		NOPx32;
+		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
+		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
 		// ~ 9.4µs
 
-		FGPIOB_PSOR = SYNC_PIN; // end of sync pulse
-		// NOW announce the horizontal start of line video
-		video = (intr + (field & 1)) >= 41; // field 1: intr >= 40 ; field 2(0): intr >= 41
+		// Announce the horizontal start of line video, to main program
+		// Always the start of the first FULL line of video, after the half line that begins field 2
+		// (Expression is written this way and not as a ternary in order to have constant cycle count)
+		video = intr & -((intr + (field & 1)) >= 41); // field 1: intr >= 40 ; field 2(0): intr >= 41
+
+		//if(  (intr + (field & 1)) == 41 )
+			FGPIOB_PSOR = PB_F6;
 	} else {
 		// no neg sync pulse
 	}
-
-
 
 	// At least 12 cycles for this update: (~ 1µs)
 
 	if((++intr) == 525) {
 		intr = 0;
 		++field;
+		FGPIOB_PCOR = VIDEO_PIN; // always kill video during vertical blanking interval
 	}
-
-	FGPIOB_PSOR = VIDEO_PIN; // trigger signal for testing ONLY!
 #endif
-	FGPIOB_PCOR = VIDEO_PIN|LED_G;
-	NOPx32;
-	PE_NOP(); PE_NOP();
-	FGPIOB_PSOR = VIDEO_PIN|LED_G;
 }
 
 /*
@@ -201,10 +204,7 @@ void TI1_OnInterrupt(LDD_TUserData *UserDataPtr)
 /* ===================================================================*/
 void TI2_OnInterrupt(LDD_TUserData *UserDataPtr)
 {
-	FGPIOB_PCOR = PB_G1|LED_R;
-	NOPx32;
-	PE_NOP(); PE_NOP();
-	FGPIOB_PSOR = PB_G1|LED_R;
+	FGPIOB_PSOR = SYNC_PIN;
 }
 
 /* END Events */

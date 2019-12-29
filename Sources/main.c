@@ -61,14 +61,9 @@
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
 {
-	unsigned i, j;
-
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
-
-  //GPIOB_PDDR = LED_R | LED_G | LED_B | PB_F6; // 0 = input, 1 = output
-  FGPIOB_PIDR = ~0; // all inputs disabled; inputs are high-Z if disabled in GPIOx_PIDR
 
   FGPIOB_PSOR = LED_R | LED_G | LED_B;
 
@@ -91,30 +86,57 @@ int main(void)
   /*PIT_MCR = 0; */
 
   // Must turn off interrupts because we're going to poll instead
+  /*
   PIT_TCTRL0 = PIT_TCTRL1 = 0;
-  PIT_TFLG1  = PIT_TFLG_TIF_MASK; // clear interrupt flag
   PIT_TFLG0  = PIT_TFLG_TIF_MASK; // clear interrupt flag
-  PIT_LDVAL0 = PIT_LDVAL1 = 0x10;
+  PIT_TFLG1  = PIT_TFLG_TIF_MASK; // clear interrupt flag
+   */
   PIT_TCTRL0 = PIT_TCTRL1 = PIT_TCTRL_TEN_MASK;
 
   // wait for timer expiry
-  while(!(PIT_TFLG1 & PIT_TFLG_TIF_MASK)) ; // should take 4-5 cycles each poll (LDR, TST, BEQ) so could be problematic with periods < 6 cycles?
-  PIT_TFLG1  = PIT_TFLG_TIF_MASK; // clear interrupt flag
-  PIT_TCTRL1 = 0; // disable timer
-
   while(!(PIT_TFLG0 & PIT_TFLG_TIF_MASK)) ;
   PIT_TFLG0  = PIT_TFLG_TIF_MASK; // clear interrupt flag
   PIT_TCTRL0 = 0; // disable timer
 
-  //PIT_LDVAL0 = PIT_LDVAL1 = 0x20;
+  while(!(PIT_TFLG1 & PIT_TFLG_TIF_MASK)) ; // should take 4-5 cycles each poll (LDR, TST, BEQ) so could be problematic with periods < 6 cycles?
+  PIT_TFLG1  = PIT_TFLG_TIF_MASK; // clear interrupt flag
+  PIT_TCTRL1 = 0; // disable timer
 
-  PIT_TCTRL0 = PIT_TCTRL1 = PIT_TCTRL_TIE_MASK | PIT_TCTRL_TEN_MASK; // re-enable timers
+  //PIT_LDVAL0 = PIT_LDVAL1 = 0x70; // values less than this result in TI2 interrupt being lost (!)
+
+  PIT_TCTRL0 = PIT_TCTRL_TIE_MASK | PIT_TCTRL_TEN_MASK;
+  // This delay is also dependent on the overheads before the SYNC pulse is lowered in the vertical sync region
+  NOPx32;NOPx32;NOPx32; // ~6µs
+  NOPx32;NOPx32;NOPx32; // ~6µs
+  NOPx32;NOPx32;NOPx32; // ~6µs
+  NOPx32;NOPx32;NOPx32; // ~6µs
+  NOPx32;NOPx32;NOPx32;
+  PIT_TCTRL1 = PIT_TCTRL_TIE_MASK | PIT_TCTRL_TEN_MASK; // re-enable timers
+
 
   for(;;) {
 	  // wait for video flag
-	  // when set by ISR, field will be 1 (field 1) or 0 (field 2)
+	  // when set by ISR, (field & 1) will be 1 (field 1) or 0 (field 2)
 	  // intr will be a line counter, field 1: 40, 42, 44, 46... ; field 2: 41, 43, 45, 47...
 	  // timing is up to this routine to bit bang the horizontal video signal
+
+	  unsigned i;
+	  while(!(i = video))
+		  ;
+
+	  if (i & 32)
+	  {
+		  FGPIOB_PSOR = VIDEO_PIN | LED_B;
+		  PE_NOP();
+		  PE_NOP();
+		  PE_NOP();
+		  PE_NOP();
+		  FGPIOB_PCOR = VIDEO_PIN | LED_B;
+	  }
+
+	  while(video == i)
+		  ;
+
   }
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/

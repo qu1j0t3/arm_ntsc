@@ -289,7 +289,7 @@
     </GenFiles>
     <SignalListFile>Documentation\tryoutpe_SIGNALS.txt</SignalListFile>
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>28</ProjectModificationStamp>
+    <ProjectModificationStamp>29</ProjectModificationStamp>
   </Options>
   <CpuID_2>
     <Generated>true</Generated>
@@ -537,8 +537,8 @@
     <GenComponentVersion>01.128</GenComponentVersion>
     <GenDriverVersion>01.08</GenDriverVersion>
     <GenEventModule>Events</GenEventModule>
-    <HeaderAge>1334806356</HeaderAge>
-    <CodeAge>1334806356</CodeAge>
+    <HeaderAge>1335606731</HeaderAge>
+    <CodeAge>1335606731</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>27</GenNumMethods>
     <Init>true</Init>
@@ -584,85 +584,85 @@
       <MethodPos0>Init</MethodPos0>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>221</LineBeg>
-      <LineEnd>241</LineEnd>
+      <LineBeg>234</LineBeg>
+      <LineEnd>254</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos1>SetFieldValue</MethodPos1>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>242</LineBeg>
-      <LineEnd>267</LineEnd>
+      <LineBeg>255</LineBeg>
+      <LineEnd>280</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos2>GetFieldValue</MethodPos2>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>268</LineBeg>
-      <LineEnd>293</LineEnd>
+      <LineBeg>281</LineBeg>
+      <LineEnd>306</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos3>ClearFieldBits</MethodPos3>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>294</LineBeg>
-      <LineEnd>322</LineEnd>
+      <LineBeg>307</LineBeg>
+      <LineEnd>335</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos4>SetFieldBits</MethodPos4>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>323</LineBeg>
-      <LineEnd>351</LineEnd>
+      <LineBeg>336</LineBeg>
+      <LineEnd>364</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos5>ToggleFieldBits</MethodPos5>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>352</LineBeg>
-      <LineEnd>380</LineEnd>
+      <LineBeg>365</LineBeg>
+      <LineEnd>393</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos6>Init</MethodPos6>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>150</LineBeg>
-      <LineEnd>188</LineEnd>
+      <LineBeg>159</LineBeg>
+      <LineEnd>197</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos7>SetFieldValue</MethodPos7>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>189</LineBeg>
-      <LineEnd>299</LineEnd>
+      <LineBeg>198</LineBeg>
+      <LineEnd>321</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos8>GetFieldValue</MethodPos8>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>300</LineBeg>
-      <LineEnd>393</LineEnd>
+      <LineBeg>322</LineBeg>
+      <LineEnd>425</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos9>ClearFieldBits</MethodPos9>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>394</LineBeg>
-      <LineEnd>471</LineEnd>
+      <LineBeg>426</LineBeg>
+      <LineEnd>510</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos10>SetFieldBits</MethodPos10>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>472</LineBeg>
-      <LineEnd>549</LineEnd>
+      <LineBeg>511</LineBeg>
+      <LineEnd>595</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos11>ToggleFieldBits</MethodPos11>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>550</LineBeg>
-      <LineEnd>627</LineEnd>
+      <LineBeg>596</LineBeg>
+      <LineEnd>680</LineEnd>
     </MethodPos>
     <GenExtraFilesCount>1</GenExtraFilesCount>
     <ExtraFile0>Documentation\doxygen\GPIO1_component.txt</ExtraFile0>

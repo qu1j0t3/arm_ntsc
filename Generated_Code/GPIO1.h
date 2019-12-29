@@ -7,7 +7,7 @@
 **     Version     : Component 01.128, Driver 01.08, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2019-12-15, 16:58, # CodeGen: 26
+**     Date/Time   : 2019-12-27, 23:46, # CodeGen: 32
 **     Abstract    :
 **         The HAL GPIO component will provide a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -19,9 +19,9 @@
 **          Component name                                 : GPIO1
 **          Port                                           : GPIOB
 **          Port width                                     : 32 bits
-**          Mask of allocated pins                         : 0x602C080
+**          Mask of allocated pins                         : 0x4602C080
 **          Interrupt service/event                        : Disabled
-**          Bit fields                                     : 6
+**          Bit fields                                     : 7
 **            Bit field                                    : 
 **              Field name                                 : LEDR
 **              Pins                                       : 1
@@ -72,6 +72,15 @@
 **              Pins                                       : 1
 **                Pin                                      : 
 **                  Pin                                    : PTG1
+**                  Pin signal                             : 
+**                  Initial pin direction                  : Output
+**                    Initial output state                 : 0
+**                  Initial pin event                      : Disabled
+**            Bit field                                    : 
+**              Field name                                 : TEST4
+**              Pins                                       : 1
+**                Pin                                      : 
+**                  Pin                                    : PTH6
 **                  Pin signal                             : 
 **                  Initial pin direction                  : Output
 **                    Initial output state                 : 0
@@ -180,9 +189,10 @@ extern "C" {
 #define TEST ((LDD_GPIO_TBitField)3)
 #define TEST2 ((LDD_GPIO_TBitField)4)
 #define TEST3 ((LDD_GPIO_TBitField)5)
+#define TEST4 ((LDD_GPIO_TBitField)6)
 
 /* Definition of implementation constants */
-#define GPIO1_ALLOCATED_PINS_MASK 0x0602C080U /*!< Mask of all allocated pins from the port */
+#define GPIO1_ALLOCATED_PINS_MASK 0x4602C080U /*!< Mask of all allocated pins from the port */
 #define GPIO1_MODULE_BASE_ADDRESS GPIOB_BASE_PTR /*!< Name of macro used as the base address */
 #define GPIO1_PORTCONTROL_BASE_ADDRESS PORT_BASE_PTR /*!< Name of macro used as the base address */
 #define GPIO1_AVAILABLE_EVENTS_MASK 0x00U /*!< Mask of all available events */
@@ -192,6 +202,7 @@ extern "C" {
 #define GPIO1_FIELD_3_PIN_0 LDD_GPIO_PIN_14 /*!< Constant for the pin in the field used in the method ConnectPin */
 #define GPIO1_FIELD_4_PIN_0 LDD_GPIO_PIN_15 /*!< Constant for the pin in the field used in the method ConnectPin */
 #define GPIO1_FIELD_5_PIN_0 LDD_GPIO_PIN_17 /*!< Constant for the pin in the field used in the method ConnectPin */
+#define GPIO1_FIELD_6_PIN_0 LDD_GPIO_PIN_30 /*!< Constant for the pin in the field used in the method ConnectPin */
 #define GPIO1_LEDR_START_BIT 25u       /*!< Index of the starting bit of the bit field (0 represents LSB) */
 #define GPIO1_LEDR_MASK 0x02000000u    /*!< Mask of the bits allocated by the bit field (within the port) */
 #define GPIO1_LEDG_START_BIT 26u       /*!< Index of the starting bit of the bit field (0 represents LSB) */
@@ -204,6 +215,8 @@ extern "C" {
 #define GPIO1_TEST2_MASK 0x8000u       /*!< Mask of the bits allocated by the bit field (within the port) */
 #define GPIO1_TEST3_START_BIT 17u      /*!< Index of the starting bit of the bit field (0 represents LSB) */
 #define GPIO1_TEST3_MASK 0x00020000u   /*!< Mask of the bits allocated by the bit field (within the port) */
+#define GPIO1_TEST4_START_BIT 30u      /*!< Index of the starting bit of the bit field (0 represents LSB) */
+#define GPIO1_TEST4_MASK 0x40000000u   /*!< Mask of the bits allocated by the bit field (within the port) */
 /* Representation of unaligned data value of the port.
    Unsigned integer of proper width depending on the size of the GPIO port allocated.
    Typically the value of n-th bit represents the data for the n-th pin within the port.

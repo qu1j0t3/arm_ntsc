@@ -13,11 +13,12 @@
 #define LED_G (1<<26) // PTH2
 #define LED_B (1<<7)  // PTE7
 
-#define PB_F6 (1<<14)
+#define PB_F6 (1<<14) // on my board this pin has bad levels (1v/3.1v) (broken?) -- can still be used for triggering
 #define PB_F7 (1<<15)
 #define PB_G1 (1<<17)
+#define PB_H6 (1<<30)
 
-#define SYNC_PIN PB_F6
+#define SYNC_PIN PB_G1
 #define VIDEO_PIN PB_F7
 
 
@@ -35,5 +36,10 @@
 #define NOPx16 \
 	PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); \
 	PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP(); PE_NOP();
+
+extern volatile unsigned field;
+extern volatile unsigned intr;
+extern volatile unsigned video;
+
 
 #endif /* SOURCES_IO_H_ */
