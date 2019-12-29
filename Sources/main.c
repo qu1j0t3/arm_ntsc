@@ -244,14 +244,17 @@ int main(void)
 	  while(!(i = video))
 		  ;
 
+	  // The timer interrupts must be disabled during video generation,
+	  // or they introduce a large half-line pause.
+
+	  PIT_TCTRL0 = PIT_TCTRL1 = PIT_TCTRL_TEN_MASK;
+
 	  // Unfortunately the timing here will have some cycles of horizontal jitter,
 	  // which is unavoidable when polling a value set by the ISR.
 
 	  unsigned row = i/4 - 10;
-#define WAIT() PE_NOP();
+#define WAIT() PE_NOP()
 	  if(row < 120) {
-		  FGPIOB_PSOR = VIDEO_PIN; PE_NOP();PE_NOP();PE_NOP();PE_NOP();PE_NOP();PE_NOP(); FGPIOB_PCOR = VIDEO_PIN;
-
 		  uint8_t *p = image + row*15;
 		  for(uint8_t j = 0; j < 5; ++j){
 			  FGPIOB_PSOR = (p[j] & 0x80) << (15 - 7); WAIT(); FGPIOB_PCOR = VIDEO_PIN;
@@ -266,9 +269,17 @@ int main(void)
 
 	  }
 
+
+	  // Update the interrupt count if an interrupt was missed,
+	  // then re-enable timer interrupts.
+
+	  if(PIT_TFLG0 & PIT_TFLG_TIF_MASK) {
+		  ++intr;
+		  PIT_TFLG0 = PIT_TFLG_TIF_MASK;
+	  }
+	  PIT_TCTRL0 = PIT_TCTRL1 = PIT_TCTRL_TIE_MASK | PIT_TCTRL_TEN_MASK;
+
 	  // Do nothing more on this line until the next video interrupt.
-
-
 
 	  while(video == i)
 		  ;

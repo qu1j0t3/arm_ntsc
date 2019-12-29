@@ -176,7 +176,7 @@ void TI1_OnInterrupt(LDD_TUserData *UserDataPtr)
 
 	// At least 12 cycles for this update: (~ 1µs)
 
-	if((++intr) == 525) {
+	if((++intr) >= 525) {
 		intr = 0;
 		++field;
 		FGPIOB_PCOR = VIDEO_PIN; // always kill video during vertical blanking interval
